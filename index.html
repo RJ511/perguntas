@@ -1,36 +1,186 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nazaré?</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
+<title>Nazaré?</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-family: Arial, sans-serif;
+        color: white;
+
+        background:
+            radial-gradient(circle at 50% 20%, #f8d98b 0%, transparent 45%),
+            linear-gradient(135deg, #d99a3d, #f0bd62);
+    }
+
+    .content {
+        text-align: center;
+        z-index: 10;
+
+        animation: appear 1s ease-out;
+    }
+
+    h1 {
+        margin: 0;
+        max-width: 900px;
+
+        font-size: clamp(3rem, 7vw, 6rem);
+        line-height: 1;
+
+        text-shadow:
+            0 4px 0 rgba(0,0,0,.12),
+            0 10px 30px rgba(0,0,0,.2);
+
+        animation: float 4s ease-in-out infinite;
+    }
+
+    .sub {
+        margin-top: 25px;
+        font-size: 1.3rem;
+        opacity: .9;
+    }
+
+    /* ondas */
+
+    .wave {
+        position: absolute;
+        left: -5%;
+        bottom: -80px;
+
+        width: 110%;
+        height: 180px;
+
+        background: #42a9c7;
+        border-radius: 50% 50% 0 0;
+
+        animation: wave 5s ease-in-out infinite;
+    }
+
+    .wave:nth-child(2) {
+        bottom: -110px;
+        opacity: .65;
+        animation-duration: 7s;
+        animation-direction: reverse;
+    }
+
+    .wave:nth-child(3) {
+        bottom: -140px;
+        opacity: .35;
+        animation-duration: 9s;
+    }
+
+    /* elementos a flutuar */
+
+    .floating {
+        position: absolute;
+        font-size: 3rem;
+        animation: drift linear infinite;
+    }
+
+    .one {
+        top: 15%;
+        left: 12%;
+        animation-duration: 8s;
+    }
+
+    .two {
+        top: 65%;
+        left: 18%;
+        animation-duration: 11s;
+    }
+
+    .three {
+        top: 20%;
+        right: 12%;
+        animation-duration: 9s;
+    }
+
+    .four {
+        top: 60%;
+        right: 17%;
+        animation-duration: 13s;
+    }
+
+    @keyframes appear {
+        from {
+            opacity: 0;
+            transform: translateY(30px) scale(.95);
         }
 
-        body {
-            margin: 0;
-            min-height: 100vh;
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            background: #111;
-            color: white;
-            font-family: Arial, sans-serif;
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
         }
 
-        h1 {
-            font-size: 4rem;
-            text-align: center;
+        50% {
+            transform: translateY(-10px);
         }
-    </style>
+    }
+
+    @keyframes wave {
+        0%, 100% {
+            transform: translateX(-3%) rotate(-2deg);
+        }
+
+        50% {
+            transform: translateX(3%) rotate(2deg);
+        }
+    }
+
+    @keyframes drift {
+        0% {
+            transform: translate(0, 0) rotate(0deg);
+        }
+
+        50% {
+            transform: translate(30px, -25px) rotate(15deg);
+        }
+
+        100% {
+            transform: translate(0, 0) rotate(0deg);
+        }
+    }
+</style>
 </head>
 
 <body>
-    <h1>Quem é que vai à Nazaré esta quinta?</h1>
+
+    <div class="content">
+        <h1>Quem é que vai à Nazaré esta quinta?</h1>
+        <div class="sub">🌊 vá lá, não sejam conas</div>
+    </div>
+
+    <!-- coisas a flutuar -->
+    <div class="floating one">🏄</div>
+    <div class="floating two">🗿</div>
+    <div class="floating three">🌴</div>
+    <div class="floating four">🦀</div>
+
+    <!-- ondas -->
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+
 </body>
 </html>

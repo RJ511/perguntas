@@ -558,3 +558,67 @@ input:focus {
         padding: 28px 22px;
     }
 }
+.terms {
+    margin-top: 18px;
+    color: white;
+    text-align: center;
+    font-size: 0.7rem;
+}
+
+.terms summary {
+    cursor: pointer;
+    opacity: 0.6;
+    text-decoration: underline;
+    user-select: none;
+}
+
+.terms summary:hover {
+    opacity: 1;
+}
+
+.terms-content {
+    width: min(420px, 90vw);
+    margin-top: 10px;
+    padding: 16px 20px;
+
+    border-radius: 15px;
+
+    background: rgba(80, 45, 10, 0.25);
+    border: 1px solid rgba(255,255,255,.2);
+
+    font-size: 0.75rem;
+    line-height: 1.5;
+
+    text-align: left;
+
+    backdrop-filter: blur(8px);
+
+    animation: termsIn .25s ease-out;
+}
+
+.terms-content p {
+    margin-top: 0;
+}
+
+.terms-content ul {
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+.terms-small {
+    margin-bottom: 0;
+    opacity: .5;
+    font-size: .65rem;
+}
+
+@keyframes termsIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

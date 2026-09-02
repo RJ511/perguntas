@@ -1,0 +1,560 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #f8dc96 0%,
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #d59638,
+            #efbd64
+        );
+}
+
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+main {
+    position: relative;
+    z-index: 5;
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    width: min(900px, 90%);
+    min-height: 75vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    animation: appear 1s ease-out;
+}
+
+.badge {
+    padding: 8px 18px;
+
+    border: 2px solid rgba(255,255,255,.5);
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.12);
+
+    font-size: .9rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    backdrop-filter: blur(5px);
+}
+
+h1 {
+    margin: 25px 0 0;
+
+    font-size: clamp(
+        3rem,
+        8vw,
+        6.5rem
+    );
+
+    line-height: .95;
+
+    text-shadow:
+        0 5px 0 rgba(0,0,0,.1),
+        0 15px 30px rgba(0,0,0,.2);
+
+    animation: float 4s ease-in-out infinite;
+}
+
+h1 span {
+    display: inline-block;
+
+    transform: rotate(-3deg);
+
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 8px;
+}
+
+.subtitle {
+    margin: 25px 0;
+
+    font-size: 1.3rem;
+
+    opacity: .9;
+}
+
+
+/* =========================
+   BOTÃO
+========================= */
+
+.main-button,
+.submit-button {
+    border: 0;
+    border-radius: 999px;
+
+    padding: 16px 32px;
+
+    font-size: 1.1rem;
+    font-weight: 900;
+
+    color: #9a631c;
+    background: white;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 0 rgba(120,70,10,.25),
+        0 15px 30px rgba(0,0,0,.2);
+
+    transition:
+        transform .15s,
+        box-shadow .15s;
+}
+
+.main-button:hover,
+.submit-button:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 0 rgba(120,70,10,.2),
+        0 20px 35px rgba(0,0,0,.25);
+}
+
+.main-button:active,
+.submit-button:active {
+    transform: translateY(3px);
+
+    box-shadow:
+        0 3px 0 rgba(120,70,10,.25);
+}
+
+
+/* =========================
+   PARTICIPANTES
+========================= */
+
+.participants-section {
+    width: min(600px, 90%);
+
+    margin-bottom: 150px;
+
+    text-align: center;
+}
+
+.participants-section h2 {
+    font-size: 2rem;
+}
+
+.participants-section h2 span {
+    display: inline-flex;
+
+    min-width: 35px;
+    height: 35px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.2);
+
+    font-size: 1rem;
+}
+
+.participants {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.participant {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 20px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.15);
+
+    border: 1px solid rgba(255,255,255,.2);
+
+    backdrop-filter: blur(8px);
+
+    animation: participantIn .5s ease-out;
+
+    text-align: left;
+}
+
+.participant-emoji {
+    font-size: 2rem;
+}
+
+.participant-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.loading {
+    opacity: .7;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(60,35,5,.5);
+
+    backdrop-filter: blur(8px);
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    position: relative;
+
+    width: min(430px, 100%);
+
+    padding: 35px;
+
+    border-radius: 30px;
+
+    background: #f5c875;
+    color: #704614;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.3);
+
+    animation: modalIn .3s ease-out;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+
+    font-size: 2rem;
+}
+
+.close {
+    position: absolute;
+
+    top: 15px;
+    right: 20px;
+
+    border: 0;
+    background: none;
+
+    font-size: 2rem;
+
+    color: #704614;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+input {
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border: 0;
+    border-radius: 15px;
+
+    outline: none;
+
+    font-size: 1rem;
+
+    background: rgba(255,255,255,.8);
+
+    color: #50300c;
+}
+
+input:focus {
+    box-shadow:
+        0 0 0 3px rgba(255,255,255,.5);
+}
+
+.emoji-title {
+    margin-top: 25px;
+
+    font-weight: bold;
+}
+
+.emoji-picker {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 25px;
+}
+
+.emoji {
+    width: 48px;
+    height: 48px;
+
+    border: 2px solid transparent;
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.4);
+
+    font-size: 1.6rem;
+
+    cursor: pointer;
+
+    transition: transform .15s;
+}
+
+.emoji:hover {
+    transform: scale(1.15);
+}
+
+.emoji.selected {
+    border-color: white;
+
+    background: white;
+
+    transform: scale(1.1);
+}
+
+.submit-button {
+    width: 100%;
+
+    color: white;
+    background: #45a8c5;
+}
+
+.error {
+    min-height: 20px;
+
+    color: #a52c20;
+
+    font-size: .9rem;
+}
+
+
+/* =========================
+   ELEMENTOS FLUTUANTES
+========================= */
+
+.floating {
+    position: fixed;
+
+    z-index: 2;
+
+    font-size: 3rem;
+
+    pointer-events: none;
+
+    user-select: none;
+}
+
+.floating-1 {
+    top: 12%;
+    left: 8%;
+
+    animation: drift1 7s ease-in-out infinite;
+}
+
+.floating-2 {
+    top: 55%;
+    left: 15%;
+
+    animation: drift2 9s ease-in-out infinite;
+}
+
+.floating-3 {
+    top: 25%;
+    right: 10%;
+
+    animation: drift3 8s ease-in-out infinite;
+}
+
+.floating-4 {
+    top: 65%;
+    right: 15%;
+
+    animation: drift1 11s ease-in-out infinite;
+}
+
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(1deg);
+    }
+}
+
+@keyframes participantIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: scale(.9) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes drift1 {
+    0%, 100% {
+        transform: translate(0,0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translate(30px,-25px) rotate(10deg);
+    }
+}
+
+@keyframes drift2 {
+    0%, 100% {
+        transform: translate(0,0) rotate(5deg);
+    }
+
+    50% {
+        transform: translate(-20px,30px) rotate(-10deg);
+    }
+}
+
+@keyframes drift3 {
+    0%, 100% {
+        transform: translate(0,0) rotate(0);
+    }
+
+    50% {
+        transform: translate(-25px,-30px) rotate(15deg);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: 70vh;
+    }
+
+    h1 {
+        font-size: clamp(
+            3rem,
+            14vw,
+            4.5rem
+        );
+    }
+
+    .floating {
+        font-size: 2rem;
+    }
+
+    .floating-1 {
+        left: 3%;
+    }
+
+    .floating-2 {
+        left: 5%;
+    }
+
+    .floating-3 {
+        right: 3%;
+    }
+
+    .floating-4 {
+        right: 5%;
+    }
+
+    .modal-content {
+        padding: 28px 22px;
+    }
+}
